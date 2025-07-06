@@ -36,11 +36,13 @@ class SwitchExampleScreen extends StatelessWidget {
                 ],
               ),
               BlocBuilder<SwitchBloc, SwitchState>(
+                buildWhen: (previous, current) => previous.sliderValue != current.sliderValue,
                 builder: (context, state) {
                   return Container(height: 200, color: Colors.red.withOpacity(state.sliderValue));
                 },
               ),
               BlocBuilder<SwitchBloc, SwitchState>(
+                buildWhen: (previous, current) => previous.switchValue != current.switchValue,
                 builder: (context, state) {
                   return Slider.adaptive(
                     value: state.sliderValue,

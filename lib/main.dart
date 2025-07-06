@@ -14,8 +14,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => SwitchBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => SwitchBloc()),
+        BlocProvider(create: (_) => CounterBloc()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Counter Bloc',
