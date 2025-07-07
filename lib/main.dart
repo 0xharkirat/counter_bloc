@@ -1,7 +1,10 @@
 import 'package:counter_bloc/bloc/counter/counter_bloc.dart';
+import 'package:counter_bloc/bloc/image_picker/image_picker_bloc.dart';
 import 'package:counter_bloc/bloc/switch_example/switch_bloc.dart';
 import 'package:counter_bloc/ui/counter/counter_screen.dart';
+import 'package:counter_bloc/ui/image_picker/image_picker_screen.dart';
 import 'package:counter_bloc/ui/switch_example/switch_example_screen.dart';
+import 'package:counter_bloc/utils/image_picker_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,6 +21,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => SwitchBloc()),
         BlocProvider(create: (_) => CounterBloc()),
+        BlocProvider(create: (_) => ImagePickerBloc(ImagePickerUtils())),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -25,7 +29,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: const SwitchExampleScreen(),
+        home: const ImagePickerScreen(),
       ),
     );
   }
