@@ -10,10 +10,10 @@ class PostRepository {
   Future<List<PostModel>?> fetch() async {
     try {
       final response = await http.get(
-        Uri.parse('http://localhost:5500/mockjson.json'),
+        Uri.parse('https://jsonplaceholder.typicode.com/posts'),
       );
 
-      log(response.toString());
+      log(response.statusCode.toString());
 
       if (response.statusCode == 200) {
         final body = jsonDecode(response.body) as List;
